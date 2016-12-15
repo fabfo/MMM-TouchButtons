@@ -7,17 +7,17 @@ An action button Module for MagicMirror<sup>2</sup>
 ## Installation
  1. Clone this repo into `~/MagicMirror/modules` directory.
  2. Configure your `~/MagicMirror/config/config.js`:
-	```
-	{
-		module: 'MMM-ActionButton',
-		position: 'top_right',
-		config: {
-			action: 'hideall', 
-			command: '',
-			...
-		}
-	}
-	```
+    ```
+    {
+        module: 'MMM-ActionButton',
+        position: 'top_right',
+        config: {
+            action: 'hideall', 
+            command: '',
+            ...
+        }
+    }
+    ```
 
 ## Config Options
 ### `text`
@@ -27,10 +27,10 @@ An action button Module for MagicMirror<sup>2</sup>
 ### `action`
 * Description : The action to do when the button is pressed.
 * Possible values :
-	* `toggleall` : Hide or show all other modules
-	* `hideall`	: Hide all other modules
-	* `showall` : Show all other modules
-	* `exec` : Execute a command
+    * `toggleall` : Hide or show all other modules
+    * `hideall`	: Hide all other modules
+    * `showall` : Show all other modules
+    * `exec` : Execute a command
 * Default : `'toggleall'`
 
 ### `command`
