@@ -23,6 +23,7 @@ An action button Module for MagicMirror<sup>2</sup>
 ### `text`
 * Description : the text displayed in the button
 * Default : `'Toggle all'`
+
 ### `action`
 * Description : The action to do when the button is pressed.
 * Possible values :
@@ -31,5 +32,6 @@ An action button Module for MagicMirror<sup>2</sup>
 	* `showall` : Show all other modules
 	* `exec` : Execute a command
 * Default : `'toggleall'`
+
 ### `command`
 * Description : The command to execute if the action is `exec`.
