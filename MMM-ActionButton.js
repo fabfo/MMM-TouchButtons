@@ -59,7 +59,7 @@ Module.register('MMM-ActionButton', {
                 break;
 
             case 'exec':
-                this.sendSocketNotification('BUTTON_PRESSED', { command: this.config });
+                this.sendSocketNotification('BUTTON_PRESSED', this.config);
                 break;
 
             default:
