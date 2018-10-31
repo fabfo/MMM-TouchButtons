@@ -3,10 +3,10 @@ const exec = require('child_process').exec;
 var NodeHelper = require("node_helper");
 
 module.exports = NodeHelper.create({
-	socketNotificationReceived: function(notification, config) {
+	socketNotificationReceived: function(notification, button) {
 		switch (notification) {
 			case 'BUTTON_PRESSED':
-				this.onButtonPressed(config);
+				this.onButtonPressed(button);
 				break;
 		
 			default:
@@ -15,11 +15,11 @@ module.exports = NodeHelper.create({
 		}
 	},
 
-	onButtonPressed: function(config) {
-		console.log('onButtonPressed', config);
-		switch (config.action) {
+	onButtonPressed: function(button) {
+		console.log('onButtonPressed', button);
+		switch (button.action) {
 			case 'exec':
-				this.doActionExec(config);
+				this.doActionExec(button);
 				break;
 		
 			default:
@@ -28,9 +28,9 @@ module.exports = NodeHelper.create({
 		}
 	},
 
-	doActionExec: function(config) {
-		console.log('doActionExec', config);
-		console.log(exec(config.command));
+	doActionExec: function(button) {
+		console.log('doActionExec', button);
+		console.log(exec(button.command));
 	}
 
 	// TODO Find a way to hide/show/toggle other modules from here

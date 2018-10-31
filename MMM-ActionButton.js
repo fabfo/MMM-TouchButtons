@@ -3,20 +3,43 @@
 Module.register('MMM-ActionButton', {
     // Default module config.
     defaults: {
-        text: 'Toggle all',
-        action: 'toggleall'
+        buttons: [
+            {
+                text: 'Toggle all',
+                action: 'toggleall'
+            }
+        ]
     },
 
     getStyles: function () {
-        "use strict";
-        return ["MMM-ActionButton.css"];
+        'use strict';
+        return ['MMM-ActionButton.css', 'font-awesome.css'];
     },
 
     // Override dom generator.
     getDom: function () {
         var wrapper = document.createElement('div');
-        wrapper.innerHTML = '<div id="' + this.identifier + '-button" class="button" style="z-index: 10000;">' + this.config.text + '</div>';
-        wrapper.addEventListener('click', this.onTouch.bind(this));
+        for (let index = 0; index < this.config.buttons.length; index++) {
+            const button = this.config.buttons[index];
+
+            var buttonElm = document.createElement('div');
+            buttonElm.className = 'button';
+            buttonElm.style = 'z-index: 10000;'
+            buttonElm.id = `${this.identifier}-button-${index}`;
+            if (button.icon) {
+                var icon = document.createElement("i");
+                icon.className = `fa ${button.icon}`;
+                icon.innerHTML = '&nbsp;';
+                buttonElm.appendChild(icon);
+            }
+            if (button.text) {
+                var text = document.createElement("span");
+                text.innerHTML = button.text;
+                buttonElm.appendChild(text);
+            }
+            buttonElm.addEventListener('click', this.onTouch.bind(this, index));
+            wrapper.appendChild(buttonElm);
+        }
         return wrapper;
     },
 
@@ -24,9 +47,10 @@ Module.register('MMM-ActionButton', {
         Log.info('Starting module: ' + this.name);
     },
 
-    onTouch: function () {
-        Log.info(this.name + ' touched');
-        switch (this.config.action) {
+    onTouch: function (buttonIdx) {
+        const button = this.config.buttons[buttonIdx];
+        Log.info(`${this.name} - button ${buttonIdx} touched - action "${button.action}"`);
+        switch (button.action) {
             case 'hideall':
                 MM.getModules().exceptModule(this).enumerate(function (module) {
                     module.hide(1000, function () {
@@ -59,7 +83,7 @@ Module.register('MMM-ActionButton', {
                 break;
 
             case 'exec':
-                this.sendSocketNotification('BUTTON_PRESSED', this.config);
+                this.sendSocketNotification('BUTTON_PRESSED', button);
                 break;
 
             default:
