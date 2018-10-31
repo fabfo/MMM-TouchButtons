@@ -12,17 +12,30 @@ An action button Module for MagicMirror<sup>2</sup>
     module: 'MMM-ActionButton',
     position: 'top_right',
     config: {
-        action: 'hideall', 
-        command: '',
-        ...
+        buttons: [
+            {
+                text: 'Hello',
+                action: 'exec', 
+                command: 'echo Hello'
+            },
+            {
+                icon: 'fa-lightbulb-o',
+                action: 'exec', 
+                command: 'echo Hello'
+            }
+        ]
     }
 }
 ```
 
 ## Config Options
 ### `text`
-* Description : the text displayed in the button
+* Description : The text displayed in the button
 * Default : `'Toggle all'`
+
+### `icon`
+* Description : The icon displayed in the button. See [Font Awesome](https://fontawesome.com/v4.7.0/) website.
+* Default : None
 
 ### `action`
 * Description : The action to do when the button is pressed.
