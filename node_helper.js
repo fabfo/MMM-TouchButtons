@@ -16,7 +16,7 @@ module.exports = NodeHelper.create({
 	},
 
 	onButtonPressed: function(button) {
-		console.log('onButtonPressed', button);
+		console.log('MMM-TouchButtons button pressed');
 		switch (button.action) {
 			case 'exec':
 				this.doActionExec(button);
@@ -29,7 +29,7 @@ module.exports = NodeHelper.create({
 	},
 
 	doActionExec: function(button) {
-		console.log('doActionExec', button);
+		console.log('MMM-TouchButtons do action exec:', button.command);
 		console.log(exec(button.command));
 	}
 
