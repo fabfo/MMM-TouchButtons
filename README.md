@@ -1,4 +1,4 @@
-# MMM-ActionButton
+# MMM-TouchButtons
 An action button Module for MagicMirror<sup>2</sup>
 
 ## Dependencies
@@ -9,7 +9,7 @@ An action button Module for MagicMirror<sup>2</sup>
  2. Configure your `~/MagicMirror/config/config.js`:
 ```
 {
-    module: 'MMM-ActionButton',
+    module: 'MMM-TouchButtons',
     position: 'top_right',
     config: {
         buttons: [
